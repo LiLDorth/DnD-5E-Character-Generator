@@ -568,7 +568,7 @@ try {
                                         for (i = 1; i < infoValue.length; i++) {
                                             cantrips[i] = infoValue[i];
                                         }
-                                        retrieve('spells', JSON.stringify(spells));
+                                        retrieve('spells', JSON.stringify(cantrips));
                                         break;
                                     case 'spells':
                                         spellAmount = Number(infoValue[0]);
