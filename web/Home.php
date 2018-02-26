@@ -1,19 +1,29 @@
 <?php
 
 session_start();
-try 
-{
+try {
     global $db;
-	$user = 'postgres';
-	$password = 'server';
-	$db = new PDO('pgsql:host=localhost;dbname=dnd', $user, $password);
-	$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+	$dbUrl = getenv('DATABASE_URL');
+
+	if (empty($dbUrl)){
+		$dbUrl = "postgres://postgres:server@localhost:5432/dnd";
+	}
+	
+	$dbopts = parse_url($dbUrl);
+
+	$currentHost = $dbopts["host"];
+	$currentPort = $dbopts["port"];
+	$currentUser = $dbopts["user"];
+	$password = $dbopts["pass"];
+	$name = ltrim($dbopts["path"], '/');
+
+	$db = new PDO("pgsql:host=$currentHost;port=$currentPort;dbname=$name", $currentUser, $password);
+    $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+} catch (PDOException $ex) {
+	echo 'Bad Connection: ' . $ex->getMessage();
+	die(); 
 }
-catch (PDOException $ex)
-{
-	echo 'ERROR! ' . $ex->getMessage();
-	die();
-}
+
 
 try {
     $query = "SELECT id FROM public.user WHERE username = :username";
