@@ -1,10 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Dungeons and Dragons Menu</title>
+    <meta charset="UTF-16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DnD</title>
+    <link rel="stylesheet" href="DnDCSS.CSS">
 </head>
 <body>
-<h1>Dungeons and Dragons Menu</h1>
+    <header><input class="mute" id="mute" onclick="document.getElementById('music').muted=!document.getElementById('music').muted" type="button" value="&#128266;"><pre><b style="font-family: 'Press Start 2P', cursive;">Dungeons &amp; Dragons</b> 
+                                        Builder </pre></header>
+    <audio  id="music" autoplay loop preload="auto">
+        <source src="8bit_Dungeon_Boss_Video_Classica.mp3" type="audio/mpeg">
+        <!--
+            8bit Dungeon Boss - Video Classica by Kevin MacLeod is licensed under a Creative Commons Attribution license (https://creativecommons.org/licenses/by/4.0/)
+            Source: http://incompetech.com/music/royalty-free/index.html?isrc=USUAN1200067
+            Artist: http://incompetech.com/ -->
+    </audio>
+    <div class="swords">
+        <img id="red" src="RedSword.png" style="margin-right: 15%">
+        <img id="purple" src="PurpleSword.png" style="margin-left: 15%">
+    </div>
+    <div class="menu">
+        <div class="fire" style="float: left; margin-left: 28%">
+        </div>
+        <div class="fire" style="float: right; margin-right: 28%">
+        </div>
+        <input type="button" id="login" value="Login" onclick="openSignIn(false)">
+        <br/>
+<input class type="button" id="build" value="Build">
+        <br/>
+        <input type="button" id="create" value="Create User" onclick="openSignIn(true)">
+
+    </div>
+    <div class="sign" id="userSign">
+            <form action="DnD_SignIn.php" method="post">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeSignIn()">&times;</a>
+            <input type="text" id="username" placeholder="Username" style="width: 20%" name="user">
+            <br/>
+            <input type="password" id="password" placeholder="Password" name="pass">
+            <br>
+            <input type="submit" value="" id="submitType" name="formType">
+        </form>
+    </div>
+    
+    <script>
+        function openSignIn(create) {
+            document.getElementById("userSign").style.height = "75%";
+            document.getElementById("userSign").style.paddingTop = "50%";
+            if (create == false)
+                document.getElementById("submitType").value = 'Sign In';
+            else
+                document.getElementById("submitType").value = 'Create User';
+            //document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+        }
+        
+        function closeSignIn() {
+            document.getElementById("userSign").style.height = "0";
+            document.getElementById("userSign").style.paddingTop = "0%";
+            //document.body.style.backgroundColor = "white";
+            //<div class="sword">
+      //  <img src="swords%20clash0.png.png">
+    //</div>
+        }
+        
+    </script>
 </body>
 </html>
