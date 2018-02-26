@@ -606,7 +606,7 @@ try {
                 
                 }
             };
-         xmlhttp.open("POST", ("http://localhost/cs313-php/web/lookUp.php"), true);
+         xmlhttp.open("POST", "lookUp.php", true);
          xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
          xmlhttp.send(parse);
     }
