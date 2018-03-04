@@ -22,16 +22,17 @@ header {
 
 body {
     background:
-linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
-background-color: #131313;
-background-size: 20px 20px;
-    margin: auto;
-    text-align: center;
+        linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+        linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+        linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+        linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+        linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+        linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    
+        background-color: #131313;
+        background-size: 20px 20px;
+        margin: auto;
+        text-align: center;
     
 }
 
@@ -51,6 +52,11 @@ input {
     filter: alpha(opacity=80); /* For IE8 and earlier */
     width: 400px;
     
+}
+
+input:hover {
+    color: rgba(247, 224, 106, .9);
+    background-color: rgba(207,142,68,0.4);
 }
 
 .sign {
@@ -117,86 +123,78 @@ input {
     100% { background-position: -510px; }
 }
 
-ul {
-    width: 20%;
-    height: 75px;
-    padding: 12px 20px;
-    box-sizing: border-box;
-    align-content: center;
-    margin: auto;
-    list-style-type: circle;
-    list-style-position: inside;
-    border-color: darkblue;
-    border-style: solid;
+.menu{
+    background: radial-gradient(circle,rgba(245,99,22,0.13), rgba(245,189,22,0.001));
+}
+
+.swordClash {
+    width: 240px;
+    visibility: hidden;
+    height: 200px;
+    position: absolute; 
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.purpleSword {
+    //padding-left: 390px;
+    top: 20%;
+    left: 50%;
+    transform: translate(500%, 0%);
+    transition: width 2s, height 2s, transform 1s;
+}
+
+.redSword {
+    //padding-right: 390px;
+    top: 20%;
+    left: 50%;
+    transform: translate(-400%, 0%);
+    visibility: visible;
+    transition: width 2s, height 2s, transform 1s;
+}
+.menu:hover .swordClash{
+    animation: appear .5s ease-in .8s forwards;
+}
+
+@keyframes appear {
+    to {
+    visibility: visible;
     }
-
-table{
-    border: 10px solid black;
-    text-align: center;
-    margin: auto;
-    list-style-position: inside;
+}
+@keyframes disappear {
+    to {
+    visibility: hidden;
+    }
 }
 
-th{
-    border: 2px solid black;
-    align-content: center;
-    border-collapse: collapse;
+.menu:hover .purpleSword {
+    transform: translateX(-35%) translateY(-2%) rotate(-580deg);
+    transform-style: preserve-3d;
+     -webkit-transition: width 2s, height 2s, -webkit-transform 1s; /* Safari */
+    transition: width 2s, height 2s, transform 1s;
+    animation: disappear .5s ease-in .3s forwards;
 }
 
-td {
-    
-    align-content: center;
-    text-align: left;
-    font-family: monospace;
-    border-bottom: 1px solid black;
+.menu:hover .redSword {
+    transform: translateX(5%) translateY(5%)rotate(580deg);
+    transform-style: preserve-3d;
+     -webkit-transition: width 2s, height 2s, -webkit-transform 1s; /* Safari */
+    transition: width 2s, height 2s, transform 1s;
+    animation: disappear .5s ease-in .3s forwards;
+   
 }
 
-td[input] {
-    vertical-align: middle;
-    
-}
-input[type=text]{
-    width: 15%;
-    padding: .5% 1%;
-    margin: 3px 0;
-    box-sizing: content-box;
-    justify-content: center;
-}
 
 input[type=submit] {
     width: 35%;
-    background-color: teal;
+    background-color: black;
     color: ghostwhite;
     padding: 1% 2%;
     margin: 1% 0;
     border: groove;
-    border-radius: 15%;
+    border-radius: 9%;
 }
 input[type=submit]:hover {
-    background-color: limegreen;
-}
-input[type=reset]{
-    width: 10%;
-    background-color: maroon;
-    color: ghostwhite;
-    padding: 1% 2%;
-    margin: 1% 0;
-    border: dotted;
-    border-color: black;
-    border-radius: 15%;
-}
-input[type=reset]:hover {
-    background-color: darkred;
-}
-h1{
-    background-color: limegreen;
-    width: 35%;
-    border-color: black;
-    padding: 1% 2%;
-    margin: 1% 0;
-    border: groove;
-    border-radius: 15%;
-    font-weight: bolder;
-    text-align: center;
-    margin:auto;
+    background-color: darkgreen;
 }
