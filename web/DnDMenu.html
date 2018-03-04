@@ -25,11 +25,11 @@
         </div>
         <div class="fire" style="position: absolute; left: 10%"></div>
         <div class="fire" style="position: absolute; right: 10%"></div>
-        <input type="button" id="login" value="Login" onclick="openSignIn(false)" class="swords">
+        <input class="controls" type="button" id="login" value="Login" onclick="openSignIn(false)" class="swords">
         <br/>
-        <input class type="button" id="build" value="Build" >
+        <input class="controls" type="button" id="build" value="Build">
         <br/>
-        <input type="button" id="create" value="Create User" onclick="openSignIn(true)">
+        <input class="controls" type="button" id="create" value="Create User" onclick="openSignIn(true)">
 
     </div>
     <div class="sign" id="userSign">
@@ -43,13 +43,18 @@
         </form>
     </div>
     
+    <audio src="Crash_Metal_Plate_Big_Room.mp3" type="audio/mpeg" id="clang" hidden="hidden">
+    </audio>
+    <audio src="Stomach_Thumps.mp3"  type="audio/mpeg" id="bam" hidden="hidden"></audio>
+    <audio src="Crash_Steel_Pipe.mp3"  type="audio/mpeg" id="pipe" hidden="hidden"></audio>
+    <audio src="Pen_Clicking.mp3"  type="audio/mpeg" id="click" hidden="hidden"></audio>
     <script>
         
         function load() {
             document.getElementById('build').addEventListener("click", function() {
                 document.getElementById('clash').src = 'clash2.png';
                 
-                setTimeout(function() {document.getElementById('clash').src = 'clash3.png';}, 75);
+                setTimeout(function() {document.getElementById('clash').src = 'clash3.png';}, 150);
             });
             
             document.getElementById('build').addEventListener("mouseleave", function() {
@@ -60,6 +65,30 @@
                 window.location = "DnDMod.html";
             });
             
+            
+              document.getElementById('build').addEventListener("click", function() {
+                  document.getElementById('clang').currentTime = 0;
+                  document.getElementById('clang').play();
+            });
+            
+             document.getElementById('login').addEventListener("click", function() {
+                  document.getElementById('bam').currentTime = 0;
+                  document.getElementById('bam').play();
+            });
+            
+             document.getElementById('create').addEventListener("click", function() {
+                  document.getElementById('pipe').currentTime = 0;
+                  document.getElementById('pipe').play();
+            });
+            
+            controls = document.getElementsByClassName('controls');
+            
+            for(i = 0; i < controls.length; i++) {
+                controls[i].addEventListener('mouseover', function() {
+                    document.getElementById('click').currentTime = 0;
+                    document.getElementById('click').play();  
+                });
+            }
         }
         function openSignIn(create) {
             document.getElementById("userSign").style.height = "75%";
