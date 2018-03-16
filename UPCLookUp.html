@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walmart UPC Lookup</title>
+</head>
+    <body>
+        <input type="number" id="upc" placeholder="Barcode Number">
+        <input type="button" name="lookUp" value="Search" onclick="retrieve()">
+        <input type="button" name="read" value="Load from Memory">
+        <table name="items"></table>
+        <textarea id="example"></textarea>
+    <script>
+            
+function retrieve() {
+    var upc = document.getElementById('upc').value;
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var info = JSON.parse(this.responseText);
+            document.getElementById('example').value = this.responseText;
+            /*for (var key in info.features){
+                    if (info.features.hasOwnProperty(key)) {
+                        if (key != 'languages') {
+                        var infoValue = info.features[key];
+                            if(null != info.features[key])
+                        }}}
+            */};}
+         xmlhttp.open("GET", "http://api.walmartlabs.com/v1/items?apiKey=kpf97zybaryzuhzjn7y7jx7s&upc=035000521019", true); // Better to hide the api key in php form
+         xmlhttp.send();
+    }
+        </script>
+    </body>
+</html>
