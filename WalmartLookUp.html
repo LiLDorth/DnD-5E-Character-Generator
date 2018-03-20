@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walmart Product Lookup</title>
+    <link rel="stylesheet" href="look.css">
+    <style>
+        #overlay {
+     visibility: hidden;
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width:100%;
+     height:100%;
+     text-align:center;
+     z-index: 1000;
+}
+        
+        #overlay div {
+     width:300px;
+     margin: 100px auto;
+     background-color: #fff;
+     border:1px solid #000;
+     padding:15px;
+     text-align:center;
+}
+    </style>
+</head>
+    <body>
+        <input type="text" id="product" placeholder="Product Name">
+        <input type="button" name="lookUp" value="Search" onclick="retrieve()">
+        <br>
+         <input type="button" name="save" value="Save to Memory" onclick="encode()">
+        <input type="button" name="read" value="Load from Memory" onclick="load()">
+        <input type="button" name="clear" value="Clear Memory" onclick="clearMemory()">
+        <div id="table"></div>
+        <div id="overlay">
+     <div id="selection">
+     </div>
+</div>
+    <script>
+var items = [];
+        
+function parseJSON(obj) {
+    if (null != obj) {
+    temp = obj.items;
+    document.getElementById('selection').innerHTML = "";
+    for (var key in temp){
+                    if (temp.hasOwnProperty(key)) {
+                        var infoValue = temp[key];
+                        var select = document.createElement('input');
+                        select.type = 'checkbox';
+                        select.value = infoValue['name'];
+                        select.name = key;
+                        select.title = infoValue['shortDescription'];
+                        document.getElementById('selection').appendChild(select);
+                        var price;
+                        if(null != infoValue['msrp'])
+                            price = infoValue['msrp'];
+                        else if (null != infoValue['salePrice'])
+                            price = infoValue['salePrice'];
+                        else {
+                            price = "Not Available"
+                            select.disabled = true;
+                        }
+                        document.getElementById('selection').innerHTML += "$" + price + " " + infoValue['name'] + "<br><br>";
+                    }}
+    overlay();
+    }
+}
+        
+function selectItems() {
+    console.log("MADE IT");
+    var choice = document.getElementById('selection').childNodes;
+      for (var key in choice){
+                    if (choice.hasOwnProperty(key)) {
+                        var infoValue = choice[key];
+                        if (infoValue.checked == true)
+                            items.push(temp[infoValue.name]);
+                    }}
+    console.log(items);
+    if (items.length > 0)
+        generateTable();
+}
+function retrieve() {
+    var name = document.getElementById('product').value;
+    if ("" != name) {
+    var s = document.createElement("script");
+    s.src = "http://api.walmartlabs.com/v1/search?apiKey=kpf97zybaryzuhzjn7y7jx7s&query=" + name + "&format=json&callback=parseJSON";
+    document.body.appendChild(s);
+    }
+}
+        
+function overlay() {
+	el = document.getElementById("overlay");
+    var button = document.createElement('input');
+            button.type = 'button';
+            button.value = "Select Items";
+            button.setAttribute('onclick', 'selectItems()');
+            document.getElementById("selection").appendChild(button);
+	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+}
+    function generateTable() {
+        if (items.length > 0) {
+            var table = document.createElement('table');
+            table.id = "itemTable";
+            var thr = document.createElement('tr');
+                var th = document.createElement('th');
+                var th1 = document.createElement('th');
+                var th2 = document.createElement('th');
+                var th3 = document.createElement('th');
+                var th4 = document.createElement('th');
+            th4.innerHTML = "Remove Item";
+            th.innerHTML = "Item";
+            th1.innerHTML = "Name";
+            th2.innerHTML = "Price($)";
+            th3.innerHTML = "Desecription";
+            thr.appendChild(th4);
+            thr.appendChild(th);
+            thr.appendChild(th1);
+            thr.appendChild(th2);
+            thr.appendChild(th3);
+            table.appendChild(thr);
+            for (var i = 0; i < items.length; i++) {
+                var tr = document.createElement('tr');
+                var td = document.createElement('td');
+                var td1 = document.createElement('td');
+                var td2 = document.createElement('td');
+                var td3 = document.createElement('td');
+                var td4 = document.createElement('td');
+                td.innerHTML = items[i]['name'];
+                td1.innerHTML = (items[i]['msrp'] != null ) ? items[i]['msrp'] : items[i]['salePrice'];
+                td2.innerHTML = items[i]['shortDescription'];
+                var image = document.createElement('img');
+                image.src = items[i]['thumbnailImage'];
+                
+                var del = document.createElement('input');
+                del.id = items[i]['itemId'];
+                del.type = "button";
+                del.setAttribute("onClick", "deleteItem(this)");
+                td4.appendChild(del);
+                td3.appendChild(image);
+                tr.appendChild(td4);
+                tr.appendChild(td3);
+                tr.appendChild(td);
+                tr.appendChild(td1);
+                tr.appendChild(td2);
+                table.appendChild(tr);
+            }
+            popup = document.getElementById("overlay");
+            popup.style.visibility = "hidden";
+            document.getElementById('table').innerHTML = "";
+            document.getElementById('table').appendChild(table);
+        }
+    }
+        function load() {
+           
+            for (var key in localStorage) {
+                    if(null != localStorage.getItem(key)) {
+                    var tempObj = JSON.parse(localStorage.getItem(key));
+                        if (!items.some(check => check.itemId== tempObj.itemId))
+                            items.push(tempObj);
+                    }
+                }
+             if (items.length > 0);
+                generateTable();
+             console.log(items);
+        }
+        function encode() {
+            if (items.length > 0) {
+                if (typeof(Storage) !== "undefined") {
+                    clearMemory();
+                    for (var i = 0; i < items.length; i++) {
+                        localStorage.setItem(i, JSON.stringify(items[i]));
+                    }
+                } else {
+                    alert("This browser does not support Web Storage");
+                    }
+            }
+            else
+                console.log("No Items to Save")
+        }
+        
+        function clearMemory() {
+            if (typeof(Storage) !== "undefined") {
+                    for (var key in localStorage) {
+                        localStorage.removeItem(key);
+                    }
+                } else
+                    alert("This browser does not support Web Storage");
+            }
+        
+        function deleteItem(item) {
+            var spot = items.findIndex(list => list.itemId== item.id);
+            items.splice(spot, 1);
+            document.getElementById('itemTable').deleteRow((item.parentNode.parentNode.rowIndex));
+            console.log(items);
+        }
+        </script>
+    </body>
+</html>
