@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-16">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Towers of Hanoi</title>
+    <link rel="stylesheet" href="towers.css"> 
+</head>
+<body onload="setUp(); reset()">
+    <h1 id="timer" style="position: absolute; margin: auto; justify-content: center"></h1>
+<div class="playArea">
+<div class="tower" id="towerOne"></div>
+<div class="tower" id="towerTwo"></div>
+<div class="tower" id="towerThree"></div>
+    
+    <input type="checkbox" id="five" class="rings" value="--ringFiveY" name="--ringFiveX">
+<label for="five" id="ringFive"   onmouseover="setActive('five')"></label>  
+    
+    <input type="checkbox" id="four" class="rings" value="--ringFourY" name="--ringFourX">
+<label for="four" id="ringFour" onmouseover="setActive('four')"></label>  
+    
+    <input type="checkbox" id="three" class="rings" value="--ringThreeY" name="--ringThreeX">
+<label for="three" id="ringThree" onmouseover="setActive('three')"></label>  
+    
+       <input type="checkbox" id="two" class="rings" value="--ringTwoY" name="--ringTwoX">
+<label for="two" id="ringTwo" onmouseover="setActive('two')"></label> 
+    
+    <input type="checkbox" id="one" class="rings" value="--ringOneY" name="--ringOneX">
+<label for="one" id="ringOne" onmouseover="setActive('one')"></label>  
+    
+    
+    </div>
+    
+    <div style="position: absolute">
+    <button type="button" id="T1" class="placement" value="--towerOneY" name="--towerOneX"  onclick="placePiece(this)">Place Tower 1</button>
+    <button type="button" id="T2" class="placement" value="--towerTwoY" name="--towerTwoX" onclick="placePiece(this)">Place Tower 2</button>
+    <button type="button" id="T3" class="placement" value="--towerThreeY" name="--towerThreeX"onclick="placePiece(this)">Place Tower 3</button>
+        <br>
+    <input type="button" class="timer" value="Start" onclick="start()" id="stopStart">
+        <input type="button" value="Reset" onclick="reset()"><input type="button" name="save" value="Save to Memory" onclick="saveScore()">
+    </div>
+    
+    <script>
+        var towerOne = [];
+        var towerTwo = [];
+        var towerThree = [];
+        
+        function setUp() {
+            towerOne.push('one');
+            towerOne.push('two');
+            towerOne.push('three');
+            towerOne.push('four');
+            towerOne.push('five');
+            var rings = document.getElementsByClassName('rings');
+            for(i = 0; i < rings.length; i++)
+                rings[i].disabled = true;
+            var active = document.getElementById('five');
+            active.className = "option";
+            active.disabled = false;
+            active.style.display = 'none';
+            console.log(towerOne);
+            
+                    if(null != localStorage.getItem('scoreM'))
+                    var scoreMin = localStorage.getItem('scoreM');
+            else
+                scoreMin = 0;
+                    if(null != localStorage.getItem('scoreS'))
+                    var scoreSec = localStorage.getItem('scoreS');
+            else
+                scoreSec = 0;
+            var highScore = "Your high score is " + scoreMin + ":" + scoreSec;
+                alert(highScore);
+        }
+        
+        function placePiece(tower) {
+            var rings = document.getElementsByClassName('option');
+            for(i = 0; i < rings.length; i++) {;
+                if (rings[i].checked == true) {
+                    var diskSize = convertName(rings[i].id);
+                    
+                    switch (tower.id) {
+                        case "T1":
+                            if (diskSize < convertName(towerOne[towerOne.length - 1])) {
+                            alert("Can't put a bigger disk on a smaller one");
+                                return;}
+                                break;
+                        case "T2":
+                            if (diskSize < convertName(towerTwo[towerTwo.length - 1])) {
+                            alert("Can't put a bigger disk on a smaller one");
+                                return;}
+                            break;
+                        case "T3":
+                            if (diskSize < convertName(towerThree[towerThree.length - 1])) {
+                                alert("Can't put a bigger disk on a smaller one");
+                            return; }
+                                break;
+                            
+                    }
+                    if((parseInt(tower.id)) < rings[i].id)
+                       console.log("Cannot stack bigger disks onto smaller ones");
+                    var origin = getComputedStyle(document.documentElement,null).getPropertyValue(rings[i].name);
+                    position = getComputedStyle(document.documentElement,null).getPropertyValue(rings[i].value);
+                    document.documentElement.style.setProperty('--active-x', '0vw');
+                    document.documentElement.style.setProperty('--active-y', '10vh');
+                    var X = rings[i].name;
+                    var Y = rings[i].value;
+                    console.log(parseFloat(position));
+                    console.log(X);
+                    console.log(Y);
+                    document.documentElement.style.setProperty(X, '0vw');
+                    document.documentElement.style.setProperty(Y, '10vh');
+                     position + 4;
+                    var newPos = " " + (parseFloat(position) + 4) + "vh"; 
+                    var disk;
+                        console.log(origin);
+                    switch (origin) {
+                        case " -19.5vw":
+                            disk = towerOne.pop();
+                            document.documentElement.style.setProperty('--towerOneY', newPos);
+                            break;
+                        case " .5vw":
+                            disk = towerTwo.pop();
+                            document.documentElement.style.setProperty('--towerTwoY', newPos);
+                            break;
+                        case " 20.5vw":
+                            disk = towerThree.pop();
+                            document.documentElement.style.setProperty('--towerThreeY', newPos);
+                            break;
+                        default:
+                            disk = 'Error';
+                    }
+                        console.log(getComputedStyle(document.documentElement,null).getPropertyValue('--towerOneY'));
+                    
+                    console.log(disk);
+                    console.log(tower.id);
+                    switch (tower.id) {
+                        case "T1":
+                            towerOne.push(disk);
+                            var pos = getComputedStyle(document.documentElement,null).getPropertyValue('--towerOneY');
+                            document.documentElement.style.setProperty('--towerOneY', (" " + (parseFloat(pos) - 4) + "vh"));
+                            break;
+                        case "T2":
+                            towerTwo.push(disk);
+                            var pos = getComputedStyle(document.documentElement,null).getPropertyValue('--towerTwoY');
+                            document.documentElement.style.setProperty('--towerTwoY', (" " + (parseFloat(pos) - 4) + "vh"));
+                            break;
+                        case "T3":
+                            towerThree.push(disk);
+                            var pos = getComputedStyle(document.documentElement,null).getPropertyValue('--towerThreeY');
+                            document.documentElement.style.setProperty('--towerThreeY', (" " + (parseFloat(pos) - 4) + "vh"));
+                    }
+                    var towerX = getComputedStyle(document.documentElement,null).getPropertyValue(tower.name);
+                    var towerY = getComputedStyle(document.documentElement,null).getPropertyValue(tower.value);
+                    
+                    console.log(towerX);
+                    console.log(towerY);
+                    
+                    document.documentElement.style.setProperty('--set-active-x', towerX);
+                    document.documentElement.style.setProperty('--set-active-y', towerY);
+                    
+                    rings[i].checked = false;
+                    rings[i].className += ' set';
+                    
+                    document.documentElement.style.setProperty(X, towerX);
+                    document.documentElement.style.setProperty(Y, towerY);
+                    setTimeout(function(){ 
+                        var disk = document.getElementsByClassName('option');
+                        for(i = 0; i < disk.length; i++) {
+                            disk[i].disabled = true;
+                            disk[i].className = "rings";
+                        } 
+                   
+                    setOptions();
+                    /*console.log(towerOne);
+                    console.log(towerTwo);
+                    console.log(towerThree);
+                    console.log(getComputedStyle(document.documentElement,null).getPropertyValue('--set-active-x'));
+                    console.log(getComputedStyle(document.documentElement,null).getPropertyValue('--set-active-y'));
+                    console.log(getComputedStyle(document.documentElement,null).getPropertyValue('--active-x'));
+                    console.log(getComputedStyle(document.documentElement,null).getPropertyValue('--active-y'));
+                    console.log(getComputedStyle(document.documentElement,null).getPropertyValue(X));
+                    console.log(getComputedStyle(document.documentElement,null).getPropertyValue(Y));*/
+                        }, 1000);
+                }
+            }
+        }
+        
+        function setActive(ringId) {
+            var currentRing = document.getElementById(ringId);
+            if(currentRing.disabled != true) {
+            var Y = getComputedStyle(document.documentElement,null).getPropertyValue(currentRing.value);
+            var X = getComputedStyle(document.documentElement,null).getPropertyValue(currentRing.name);
+            
+            document.documentElement.style.setProperty('--active-x', X);
+            document.documentElement.style.setProperty('--active-y', Y);
+            }
+            
+        }
+        
+        function setOptions() {
+            console.log(towerOne[towerOne.length - 1]);
+            console.log(towerTwo[towerTwo.length - 1]);
+            console.log(towerThree[towerThree.length - 1]);
+            var one = towerOne[towerOne.length - 1];
+            var two = towerTwo[towerTwo.length - 1];
+            var three = towerThree[towerThree.length - 1];
+            var change;
+            
+            if(null != one) {
+                    change = document.getElementById(one);
+                    change.className = "option";
+                    if(change.disabled == true)
+                        change.disabled = false;
+                    change.checked = false;
+                change.style.display = 'none';
+            }
+            if (null != two) {
+           change = document.getElementById(two);
+                    change.className = "option";
+                    if(change.disabled == true)
+                        change.disabled = false;
+                    change.checked = false;}
+            change.style.display = 'none';
+            if (null != three) {
+                change = document.getElementById(three);
+                    change.className = "option";
+                    if(change.disabled == true)
+                        change.disabled = false;
+                    change.checked = false;
+                change.style.display = 'none';
+            }
+        }
+            
+            function convertName(name) {
+                var diskSize = -1;
+               switch (name) {
+                        case 'one':
+                            diskSize = 1;
+                            break;
+                        case 'two':
+                            diskSize = 2;
+                            break;
+                        case 'three':
+                            diskSize = 3;
+                            break;
+                        case 'four':
+                            diskSize = 4;
+                            break;
+                        case ' five':
+                            diskSize = 5;
+                    }
+                return diskSize;
+            }
+        
+        
+        var m;
+        var s;
+        myVar = 0;
+        function start() {
+        document.getElementById("stopStart").value = "Stop";
+        document.getElementById("stopStart").setAttribute("onclick", "myStopFunction()");
+        myVar = setInterval(function(){ myTimer() }, 1000);
+        }
+function myTimer() {
+    s++;
+    s = addZero(s);
+    if (s > 59) {
+        m++;
+        s = 0;
+        m = addZero(m);
+    }
+    document.getElementById("timer").innerHTML = m + ":" + s;
+}
+        function myStopFunction() {
+        clearInterval(myVar);
+        document.getElementById("stopStart").value = "Start";
+        document.getElementById("stopStart").setAttribute("onclick", "start()");
+}
+        
+        function reset() {
+            m = 0;
+            s = 0;
+            m = addZero(0);
+            s = addZero(0);
+            document.getElementById("timer").innerHTML = m + ":" + s;
+            myStopFunction();
+        }
+        
+        function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+        
+        
+        function saveScore() {
+                if (typeof(Storage) !== "undefined") {
+                        localStorage.setItem('scoreM', m);
+                        localStorage.setItem('scoreS', s);
+                    } else {
+                    alert("This browser does not support Web Storage");
+                    }
+        }
+    </script>
+</body></html>
