@@ -35,20 +35,94 @@ try {
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
+      
+        @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+        body {
+            background:
+        linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+        linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+        linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+        linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+        linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+        linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    
+        background-color: #131313;
+        background-size: 20px 20px;
+            font-family: serif;
+            font-family: 'Press Start 2P', cursive !important;
+            color: black;
+        }
+      
+      label {
+          color: white;
+      }
+      
+        nav {
+    font-family: 'Press Start 2P', cursive !important;
+}
+      .score label{
+        display: inline-block;
+          width: 100%;
+          color: black;
+          padding-top: 10%;
+          font-size: 80%;
+      }
+      
+      .skillsLabel {
+          font-size: 50%;
+          color: black;
+      }
+      
+      button {
+          background-color: darkgrey;
+    border-color: black;
+    border-style: solid;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+    
+}
+
+button:hover {
+    color: rgba(247, 224, 106, .9);
+    background-color: rgba(207,142,68,0.4);
+}
+      }
   </style>
 </head>
 <body>
+    <nav class="navbar navbar-default  navbar-inverse" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        </button>
+        <p class="navbar-brand"><b>Character Builder</b></p>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li>
+                <a href="Home.php">Menu</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+      <li><a href="DnDMenu.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+    </div>
+    </div>
+</nav>
     <div class="container">
     <form class="form-horizontal" action="saveChar.php" method="get" id="myForm">
         
         <div class="container text-center">
     <div class="form-inline">
     <div class="form-group-lg col-lg-6">
-    <label for="name" style="font-size: 200%">Character Name: </label>
+    <label for="name" style="font-size: 200%">Character Name</label>
     <input type="text" class="form-control" id="name" name="char_name" required>
     </div>
   <div class="form-group-lg col-lg-6">
-    <label for="align" style="font-size: 200%">Alignment:</label>
+    <label for="align" style="font-size: 200%">Alignment</label>
     <select id="align" class="form-control" name="alignment" required>
         <option value="" disabled selected hidden>Please Choose</option>
         <option name="alignment" value="LG">Lawful Good</option>
@@ -74,7 +148,7 @@ try {
               <div class="modifier">
                 <input placeholder="+0" id="strengthmod" disabled/>
               </div>
-                <button type="button" class="btn btn-info" onclick="statGenerate('strength')" style="border-radius: 20%; margin: 5px">Roll for Stat</button>
+                <button type="button" class="btn" onclick="statGenerate('strength')" style="border-radius: 20%; margin: 5px">Roll</button>
             </li>
             <li>
               <div class="score">
@@ -83,7 +157,7 @@ try {
               <div class="modifier">
                 <input id="dexteritymod" placeholder="+0" disabled/>
               </div>
-                <button type="button" class="btn btn-info" onclick="statGenerate('dexterity')" style="border-radius: 20%; margin: 5px">Roll for Stat</button>
+                <button type="button" class="btn" onclick="statGenerate('dexterity')" style="border-radius: 20%; margin: 5px">Roll </button>
             </li>
             <li>
               <div class="score">
@@ -92,7 +166,7 @@ try {
               <div class="modifier">
                 <input id="constitutionmod" placeholder="+0" disabled/>
               </div>
-                <button type="button" class="btn btn-info" onclick="statGenerate('constitution')" style="border-radius: 20%; margin: 5px">Roll for Stat</button>
+                <button type="button" class="btn" onclick="statGenerate('constitution')" style="border-radius: 20%; margin: 5px">Roll </button>
             </li>
             <li>
               <div class="score">
@@ -101,7 +175,7 @@ try {
               <div class="modifier">
                 <input id="wisdommod" placeholder="+0" disabled/>
               </div>
-                <button type="button" class="btn btn-info" value="increase stats" onclick="statGenerate('wisdom')" style="border-radius: 20%; margin: 5px">Roll for Stat</button>
+                <button type="button" class="btn" value="increase stats" onclick="statGenerate('wisdom')" style="border-radius: 20%; margin: 5px">Roll</button>
             </li>
             <li>
               <div class="score">
@@ -110,7 +184,7 @@ try {
               <div class="modifier">
                 <input id="intelligencemod" placeholder="+0" disabled/>
               </div>
-                <button type="button" class="btn btn-info" value="increase stats" onclick="statGenerate('intelligence')" style="border-radius: 20%; margin: 5px">Roll for Stat</button>
+                <button type="button" class="btn" value="increase stats" onclick="statGenerate('intelligence')" style="border-radius: 20%; margin: 5px">Roll</button>
             </li>
             <li>
               <div class="score">
@@ -119,7 +193,7 @@ try {
               <div class="modifier">
                 <input id="charismamod" placeholder="+0" disabled/>
               </div>
-                <button type="button" class="btn btn-info" value="increase stats" onclick="statGenerate('charisma')" style="border-radius: 20%; margin: 5px">Roll for Stat</button>
+                <button type="button" class="btn" value="increase stats" onclick="statGenerate('charisma')" style="border-radius: 20%; margin: 5px">Roll</button>
             </li>
           </ul>
           <button type="button" value="randAll" name="allRand" class="btn btn-primary btn-lg center-block" onclick="statGenerate('strength'); statGenerate('dexterity'); statGenerate('constitution'); statGenerate('wisdom'); statGenerate('intelligence'); statGenerate('charisma') ">Roll All Stats</button>
@@ -157,16 +231,16 @@ try {
         
         <div class="container">
     <ul class="nav nav-tabs nav-justified">
-    <li class="active"><a data-toggle="tab" href="#home">General</a></li>
-    <li><a data-toggle="tab" href="#race">Race</a></li>
-    <li><a data-toggle="tab" href="#class">Class</a></li>
-    <li><a data-toggle="tab" href="#stat">Stats</a></li>
+        <li class="active"><a data-toggle="tab" href="#race">1.Race</a></li>
+        <li><a data-toggle="tab" href="#class">2.Class</a></li>
+    <li><a data-toggle="tab" href="#home">3.Character Info</a></li>
+    <li><a data-toggle="tab" href="#stat">4.Stats</a></li>
   </ul>
         
         
         <div class="tab-content">
-    <div id="home" class="tab-pane fade in active">
-        
+    <div id="home" class="tab-pane fade ">
+        <br>
         
       <div class="form-group">
         <div class="armorclass">
@@ -197,16 +271,17 @@ try {
 
         <div class="form-group">
   <label for="extra">Languages and Proficiencies</label>
-  <textarea class="form-control" rows="5" id="extra" name="lang" disabled></textarea>
+  <textarea class="form-control" rows="9" id="extra" name="lang" disabled></textarea>
         </div></div>
             
             
             
             
             
-    <div id="race" class="tab-pane fade">
+    <div id="race" class="tab-pane fade in active">
+        <br>
         <div class="form-group">
-  <label class="control-label col-sm-2" for="races">Select Race:</label>
+  <label class="control-label col-sm-2" for="races">Select Race</label>
                 <div class="col-sm-10">
   <select class="form-control" id="races" name="race" onchange="retrieve(this.name, this.value)" required>
       <option value="" disabled selected hidden>Please Choose</option>
@@ -226,12 +301,13 @@ try {
             
             <div class="form-group">
   <label for="race_feats">Race Feautures</label>
-  <textarea class="form-control" rows="5" id="race_feats" disabled></textarea>
+  <textarea class="form-control" rows="8" id="race_feats" disabled></textarea>
         </div></div>
             
     <div id="class" class="tab-pane fade">
+        <br>
         <div class="form-group">
-  <label class="control-label col-sm-2" for="classes">Select Class:</label>
+  <label class="control-label col-sm-2" for="classes">Select Class</label>
                 <div class="col-sm-10">
   <select class="form-control" id="classes" name="class" onchange="retrieve(this.name, this.value)" required>
       <option value="" disabled selected hidden>Please Choose</option>
@@ -250,12 +326,12 @@ try {
 </div></div>
         
               <div class="form-group">
-  <label class="control-label col-sm-1" for="spellList" id="spellLabel">Select Spells:</label>
+  <label class="control-label col-sm-1" for="spellList" id="spellLabel">Select Spells</label>
                 <div class="col-sm-5">
   <select class="form-control" id="spells" name="spellList[]" onchange="verifyAmount('spells')" multiple>
                     </select>
                   </div>
-  <label class="control-label col-sm-1" for="cantripList" id="cantripLabel">Select Cantrips:</label>
+  <label class="control-label col-sm-1" for="cantripList" id="cantripLabel">Select Cantrips</label>
                 <div class="col-sm-5">
   <select class="form-control" id="cantrips" name="cantripList[]" onchange="verifyAmount('cantrips')" multiple>
                     </select>
@@ -265,84 +341,85 @@ try {
         
         <div class="form-group">
   <label for="class_feats">Class Features</label>
-  <textarea class="form-control" rows="5" id="class_feats" disabled></textarea>
+  <textarea class="form-control" rows="8" id="class_feats" disabled></textarea>
         </div>
     </div>
             
     <div id="stat" class="tab-pane fade">
+        <br>
         <div class="form-inline">
             <div class="form-group">
             <ul>
               <li class="list-group-item col-xs-6">
-                <label for="Acrobatics" class="control-label col-sm-5">Acrobatics <span class="skill">(Dex)</span></label><input name="skills[]" id="Acrobatics" placeholder="0" type="number" class="form-control dex" disabled/>
+                <label for="Acrobatics" class="control-label col-sm-4 skillsLabel">Acrobatics <span class="skill">(Dex)</span></label><input name="skills[]" id="Acrobatics" placeholder="0" type="number" class="form-control dex" disabled/>
               </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Animal Handling" class="control-label col-sm-5">Animal Handling <span class="skill">(Wis)</span></label><input name="skills[]" id="Animal Handling" placeholder="0" type="number" class="form-control wis" disabled/>
+                <label for="Animal Handling" class="control-label col-sm-4 skillsLabel">Animal Handling <span class="skill">(Wis)</span></label><input name="skills[]" id="Animal Handling" placeholder="0" type="number" class="form-control wis" disabled/>
               </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Arcana" class="control-label col-sm-5">Arcana <span class="skill">(Int)</span></label><input name="skills[]" id="Arcana" placeholder="0"type="number" class="form-control int" disabled/>
+                <label for="Arcana" class="control-label col-sm-4 skillsLabel">Arcana <span class="skill">(Int)</span></label><input name="skills[]" id="Arcana" placeholder="0"type="number" class="form-control int" disabled/>
               </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Athletics" class="control-label col-sm-5">Athletics <span class="skill">(Str)</span></label><input name="skills[]" id="Athletics" placeholder="0" type="number" class="form-control str" disabled/>
+                <label for="Athletics" class="control-label col-sm-4 skillsLabel">Athletics <span class="skill">(Str)</span></label><input name="skills[]" id="Athletics" placeholder="0" type="number" class="form-control str" disabled/>
               </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Deception" class="control-label col-sm-5">Deception <span class="skill">(Cha)</span></label><input name="skills[]" id="Deception" placeholder="0" type="number" class="form-control cha" disabled/>
+                <label for="Deception" class="control-label col-sm-4 skillsLabel">Deception <span class="skill">(Cha)</span></label><input name="skills[]" id="Deception" placeholder="0" type="number" class="form-control cha" disabled/>
               </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="History" class="control-label col-sm-5">History <span class="skill">(Int)</span></label><input name="skills[]" id="History" placeholder="0" type="number" class="form-control int" disabled/>
+                <label for="History" class="control-label col-sm-4 skillsLabel">History <span class="skill">(Int)</span></label><input name="skills[]" id="History" placeholder="0" type="number" class="form-control int" disabled/>
               </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Insight" class="control-label col-sm-5">Insight <span class="skill">(Wis)</span></label><input name="skills[]" id="Insight" placeholder="0" type="number" class="form-control wis" disabled/>
+                <label for="Insight" class="control-label col-sm-4 skillsLabel">Insight <span class="skill">(Wis)</span></label><input name="skills[]" id="Insight" placeholder="0" type="number" class="form-control wis" disabled/>
                 </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Intimidation" class="control-label col-sm-5">Intimidation <span class="skill">(Cha)</span></label><input name="skills[]" id="Intimidation" placeholder="0" type="number" class="form-control cha" disabled/>
+                <label for="Intimidation" class="control-label col-sm-4 skillsLabel">Intimidation <span class="skill">(Cha)</span></label><input name="skills[]" id="Intimidation" placeholder="0" type="number" class="form-control cha" disabled/>
                 </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Investigation" class="control-label col-sm-5">Investigation <span class="skill">(Int)</span></label><input name="skills[]" id="Investigation" placeholder="0" type="number" class="form-control int" disabled/>
+                <label for="Investigation" class="control-label col-sm-4 skillsLabel">Investigation <span class="skill">(Int)</span></label><input name="skills[]" id="Investigation" placeholder="0" type="number" class="form-control int" disabled/>
               </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Medicine" class="control-label col-sm-5">Medicine <span class="skill">(Wis)</span></label><input name="skills[]" id="Medicine" placeholder="0" type="number"  class="form-control wis" disabled/>
+                <label for="Medicine" class="control-label col-sm-4 skillsLabel">Medicine <span class="skill">(Wis)</span></label><input name="skills[]" id="Medicine" placeholder="0" type="number"  class="form-control wis" disabled/>
               </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Nature" class="control-label col-sm-5">Nature <span class="skill">(Int)</span></label><input name="skills[]" id="Nature" placeholder="0" type="number" class="form-control int" disabled/>
+                <label for="Nature" class="control-label col-sm-4 skillsLabel">Nature <span class="skill">(Int)</span></label><input name="skills[]" id="Nature" placeholder="0" type="number" class="form-control int" disabled/>
               </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Perception" class="control-label col-sm-5">Perception <span class="skill">(Wis)</span></label><input name="skills[]" id="Perception" placeholder="0" type="number" class="form-control wis" disabled/>
+                <label for="Perception" class="control-label col-sm-4 skillsLabel">Perception <span class="skill">(Wis)</span></label><input name="skills[]" id="Perception" placeholder="0" type="number" class="form-control wis" disabled/>
                 </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Performance" class="control-label col-sm-5">Performance <span class="skill">(Cha)</span></label><input name="skills[]" id="Performance" placeholder="0" type="number" class="form-control cha" disabled/>
+                <label for="Performance" class="control-label col-sm-4 skillsLabel">Performance <span class="skill">(Cha)</span></label><input name="skills[]" id="Performance" placeholder="0" type="number" class="form-control cha" disabled/>
               </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Persuasion" class="control-label col-sm-5">Persuasion <span class="skill">(Cha)</span></label><input name="skills[]" id="Persuasion" placeholder="0" type="number" class="form-control cha" disabled/>
+                <label for="Persuasion" class="control-label col-sm-4 skillsLabel">Persuasion <span class="skill">(Cha)</span></label><input name="skills[]" id="Persuasion" placeholder="0" type="number" class="form-control cha" disabled/>
               </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Religion" class="control-label col-sm-5">Religion <span class="skill">(Int)</span></label><input name="skills[]" id="Religion" placeholder="0" type="number" class="form-control int" disabled/>
+                <label for="Religion" class="control-label col-sm-4 skillsLabel">Religion <span class="skill">(Int)</span></label><input name="skills[]" id="Religion" placeholder="0" type="number" class="form-control int" disabled/>
               </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Sleight of Hand" class="control-label col-sm-5">Sleight of Hand <span class="skill">(Dex)</span></label><input name="skills[]" id="Sleight of Hand" placeholder="0" type="number" class="form-control dex" disabled/>
+                <label for="Sleight of Hand" class="control-label col-sm-4 skillsLabel">Sleight of Hand <span class="skill">(Dex)</span></label><input name="skills[]" id="Sleight of Hand" placeholder="0" type="number" class="form-control dex" disabled/>
               </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Stealth" class="control-label col-sm-5">Stealth <span class="skill">(Dex)</span></label><input name="skills[]" id="Stealth" placeholder="0" type="number" class="form-control dex" disabled/>
+                <label for="Stealth" class="control-label col-sm-4 skillsLabel">Stealth <span class="skill">(Dex)</span></label><input name="skills[]" id="Stealth" placeholder="0" type="number" class="form-control dex" disabled/>
               </li>
                 
               <li class="list-group-item col-xs-6">
-                <label for="Survival" class="control-label col-sm-5">Survival <span class="skill">(Wis)</span></label><input name="skills[]" id="Survival" placeholder="0" type="number" class="form-control wis" disabled/>
+                <label for="Survival" class="control-label col-sm-4 skillsLabel">Survival <span class="skill">(Wis)</span></label><input name="skills[]" id="Survival" placeholder="0" type="number" class="form-control wis" disabled/>
               </li>
                 
             </ul>

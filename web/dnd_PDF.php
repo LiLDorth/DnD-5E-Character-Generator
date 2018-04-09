@@ -120,10 +120,64 @@ try {
   <title>Character Sheet</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="DnD_Sheet_CSS.CSS">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="DnD_Sheet_CSS.CSS">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+        body {
+            background:
+        linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+        linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+        linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+        linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+        linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+        linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    
+        background-color: #131313;
+        background-size: 20px 20px;
+            
+        }
+        nav {
+    font-family: 'Press Start 2P', cursive !important;
+}
+        form {
+            background-color: whitesmoke;
+            border-radius: 2%;
+            font-family: serif;
+            color: black !important;;
+        }
+        .atr {
+            margin: 5%;
+        }
+        
+    </style>
 </head>
 <body onload="start()">
+    <nav class="navbar navbar-default  navbar-inverse" role="navigation">
+    <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        </button>
+        <p class="navbar-brand"><b>Character Sheet</b></p>
+    </div>
+    <div class="collapse navbar-collapse navbar-ex1-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li>
+                <a href="Home.php">Menu</a>
+            </li>
+              <li>
+                <a href="DnD_Builder.php">Create New Character</a>
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+      <li><a href="DnDMenu.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+    </div>
+    </div>
+</nav>
 <form class="charsheet" id="sheet">
   <header>
     <section class="charname">
@@ -157,15 +211,15 @@ try {
       <section class="attributes">
         <div class="scores">
           <ul>
-            <li>
+            <li class="atr">
               <div class="score">
                 <label for="Strengthscore">Strength</label><input name="Strengthscore" value='<?php echo $str; ?>' />
               </div>
               <div class="modifier">
-                <input name="Strengthmod" value='<?php echo (floor(($str - 10) /2)); ?>'/>
+                <input name="Strengthmod" value='<?php echo (floor(($str - 10) /2)); ?>' placeholder="0" />
               </div>
             </li>
-            <li>
+            <li class="atr">
               <div class="score">
                 <label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" value='<?php echo $dex; ?>' />
               </div>
@@ -173,7 +227,7 @@ try {
                 <input name="Dexteritymod" value='<?php echo (floor(($dex- 10) /2)); ?>' />
               </div>
             </li>
-            <li>
+            <li class="atr">
               <div class="score">
                 <label for="Constitutionscore">Constitution</label><input name="Constitutionscore" value='<?php echo $const; ?>' />
               </div>
@@ -181,7 +235,7 @@ try {
                 <input name="Constitutionmod" value='<?php echo (floor(($const - 10) /2)); ?>' />
               </div>
             </li>
-            <li>
+            <li class="atr">
               <div class="score">
                 <label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" value='<?php echo $wis; ?>' />
               </div>
@@ -189,7 +243,7 @@ try {
                 <input name="Wisdommod" value='<?php echo (floor(($wis - 10) /2)); ?>'/>
               </div>
             </li>
-            <li>
+            <li class="atr">
               <div class="score">
                 <label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" value='<?php echo $intel; ?>' />
               </div>
@@ -197,7 +251,7 @@ try {
                 <input name="Intelligencemod" value='<?php echo (floor(($intel - 10) /2)); ?>' />
               </div>
             </li>
-            <li>
+            <li class="atr">
               <div class="score">
                 <label for="Charismascore">Charisma</label><input name="Charismascore" value='<?php echo $char; ?>' />
               </div>
@@ -216,7 +270,7 @@ try {
           </div>
           <div class="proficiencybonus box">
             <div class="label-container">
-              <label for="proficiencybonus">Proficiency Bonus</label>
+              <label for="proficiencybonus">Prof Bonus</label>
             </div>
             <input name="proficiencybonus" value='2' />
           </div>
@@ -249,6 +303,7 @@ try {
             <ul>
                  <?php
                $skills = json_decode($stat_info['skills'], true);
+                echo "console.log('" . $stat_info['skills'] . "');";
   foreach ($skills as $key => $data) {
         switch ($key) {
             case 0 :

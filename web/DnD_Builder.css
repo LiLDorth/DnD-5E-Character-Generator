@@ -14,9 +14,9 @@
 }
 div.scores ul li {
   height: 30%;
-  width: 10%;
+  width: 15%;
   background-color: white;
-  border: 1px solid black;
+  border: 5px solid black;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;

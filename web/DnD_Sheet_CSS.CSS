@@ -256,7 +256,7 @@ form.charsheet main > section section.attributes div.scores ul li div.score inpu
   background: white;
 }
 form.charsheet main > section section.attributes div.scores ul li div.modifier {
-  margin-top: 3px;
+  margin-top: -12px;
 }
 form.charsheet main > section section.attributes div.scores ul li div.modifier input {
   background: white;
@@ -460,7 +460,7 @@ form.charsheet main section.combat > div.hp > div.regular > div.max {
 form.charsheet main section.combat > div.hp > div.regular > div.max label {
   font-size: 10px;
   text-transform: none;
-  color: #bbb;
+  color: black;
 }
 form.charsheet main section.combat > div.hp > div.regular > div.max input {
   width: 40%;
@@ -685,7 +685,7 @@ form.charsheet main section.attacksandspellcasting > div > table {
 }
 form.charsheet main section.attacksandspellcasting > div > table th {
   font-size: 10px;
-  color: #ddd;
+  color: black;
 }
 form.charsheet main section.attacksandspellcasting > div > table input {
   width: calc(100% - 4px);

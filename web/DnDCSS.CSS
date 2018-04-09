@@ -4,6 +4,10 @@
     height: 345px;
     background: radial-gradient(circle, #F56316, #F5BD16, #FF7867); /* Standard syntax (must be last) */
 }
+
+html * {
+    font-family: 'Press Start 2P', cursive !important;
+}
 header {
     font-family: 'Press Start 2P', cursive;
     text-align: center;
