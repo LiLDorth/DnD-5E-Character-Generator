@@ -303,7 +303,7 @@ try {
             <ul>
                  <?php
                $skills = json_decode($stat_info['skills'], true);
-                echo "console.log('" . $stat_info['skills'] . "');";
+                //echo "console.log('" . $stat_info['skills'] . "');";
   foreach ($skills as $key => $data) {
         switch ($key) {
             case 0 :
