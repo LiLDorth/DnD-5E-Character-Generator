@@ -1,0 +1,204 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+#grad2 {
+    width: 278px;
+    height: 345px;
+    background: radial-gradient(circle, #F56316, #F5BD16, #FF7867); /* Standard syntax (must be last) */
+}
+
+html * {
+    font-family: 'Press Start 2P', cursive !important;
+}
+header {
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
+    font-size: 300%;
+    color: black;
+    border-color: black;
+    background-color: grey;
+    border-width: medium;
+    margin: .5%;
+    padding: .1%;
+    border-style: outset;
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+    border-radius: 5%;
+}
+
+body {
+    background:
+        linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+        linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+        linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+        linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+        linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+        linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+    
+        background-color: #131313;
+        background-size: 20px 20px;
+        margin: auto;
+        text-align: center;
+    
+}
+
+input {
+    font-family: 'Press Start 2P', cursive;
+    border-color: black;
+    border-style: solid;
+    margin:auto;
+    font-size: 250%;
+    padding: 1%;
+    margin: 1%;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+    font-size: 200%;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+    width: 400px;
+    
+}
+
+input:hover {
+    color: rgba(247, 224, 106, .9);
+    background-color: rgba(207,142,68,0.4);
+}
+
+.sign {
+    height: 0%;
+    width: 100%;
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+    transition: 0.5s;
+    text-align:center;
+    overflow: hidden; 
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    
+}
+.sign input {
+    margin: 3%;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+    font-size: 200%;
+    opacity: 1;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+    width: 20%;
+    height: 8%
+}
+.sign .closebtn {
+    position: absolute;
+    top: inherit;
+    right: 25px;
+    font-size: 36px;
+    display: inline;
+    float: right;
+    color: black;
+    background-color: grey;
+    opacity: .5;
+    margin-right: 35%;
+}
+
+.mute {
+    font-size: 100%;
+    padding: 0%;
+    margin: 0%;
+    opacity: .34;
+    width: 80px;
+    height: 70px;
+    display: inline;
+    float: right;
+    filter: alpha(opacity=34); /* For IE8 and earlier */
+}
+.fire {
+     width: 178px;
+  height: 245px;
+  margin: 1% auto;
+    background: grad2;
+  background-blend-mode: soft-light;
+  background: radial-gradient(circle,rgba(245,99,22,0.5), rgba(245,189,22,0.02)),url('8bitFire2.png')  left center;
+    border-radius: 10%;
+  animation: play .7s steps(3) infinite;
+}
+
+@keyframes play {
+    100% { background-position: -510px; }
+}
+
+.menu{
+    background: radial-gradient(circle,rgba(245,99,22,0.13), rgba(245,189,22,0.001));
+}
+
+.swordClash {
+    width: 240px;
+    visibility: hidden;
+    height: 200px;
+    position: absolute; 
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.purpleSword {
+    //padding-left: 390px;
+    top: 20%;
+    left: 50%;
+    transform: translate(500%, 0%);
+    transition: width 2s, height 2s, transform 1s;
+}
+
+.redSword {
+    //padding-right: 390px;
+    top: 20%;
+    left: 50%;
+    transform: translate(-400%, 0%);
+    visibility: visible;
+    transition: width 2s, height 2s, transform 1s;
+}
+.menu:hover .swordClash{
+    animation: appear .5s ease-in .8s forwards;
+}
+
+@keyframes appear {
+    to {
+    visibility: visible;
+    }
+}
+@keyframes disappear {
+    to {
+    visibility: hidden;
+    }
+}
+
+.menu:hover .purpleSword {
+    transform: translateX(-35%) translateY(-2%) rotate(-580deg);
+    transform-style: preserve-3d;
+     -webkit-transition: width 2s, height 2s, -webkit-transform 1s; /* Safari */
+    transition: width 2s, height 2s, transform 1s;
+    animation: disappear .5s ease-in .3s forwards;
+}
+
+.menu:hover .redSword {
+    transform: translateX(5%) translateY(5%)rotate(580deg);
+    transform-style: preserve-3d;
+     -webkit-transition: width 2s, height 2s, -webkit-transform 1s; /* Safari */
+    transition: width 2s, height 2s, transform 1s;
+    animation: disappear .5s ease-in .3s forwards;
+   
+}
+
+
+input[type=submit] {
+    width: 35%;
+    background-color: black;
+    color: ghostwhite;
+    padding: 1% 2%;
+    margin: 1% 0;
+    border: groove;
+    border-radius: 9%;
+}
+input[type=submit]:hover {
+    background-color: darkgreen;
+}
