@@ -27,27 +27,25 @@ try {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>DnD Character Builder</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <title>DnD Character Builder</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="DnD_Builder.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-      
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
         @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
         body {
             background:
-        linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
-        linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
-        linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
-        linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
-        linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
-        linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
-    
-        background-color: #131313;
-        background-size: 20px 20px;
+                linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+                linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+                linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+                linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+                linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+                linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+            background-color: #131313;
+            background-size: 20px 20px;
             font-family: serif;
             font-family: 'Press Start 2P', cursive !important;
             color: black;
@@ -58,10 +56,10 @@ try {
       }
       
         nav {
-    font-family: 'Press Start 2P', cursive !important;
-}
+            font-family: 'Press Start 2P', cursive !important;
+      }
       .score label{
-        display: inline-block;
+          display: inline-block;
           width: 100%;
           color: black;
           padding-top: 10%;
@@ -75,26 +73,25 @@ try {
       
       button {
           background-color: darkgrey;
-    border-color: black;
-    border-style: solid;
-    font-style: italic;
-    font-weight: bold;
-    text-align: center;
-    opacity: 0.8;
-    filter: alpha(opacity=80); /* For IE8 and earlier */
+          border-color: black;
+          border-style: solid;
+          font-style: italic;
+          font-weight: bold;
+          text-align: center;
+          opacity: 0.8;
+          filter: alpha(opacity=80); /* For IE8 and earlier */
     
-}
-
-button:hover {
-    color: rgba(247, 224, 106, .9);
-    background-color: rgba(207,142,68,0.4);
-}
       }
-  </style>
+
+      button:hover {
+          color: rgba(247, 224, 106, .9);
+          background-color: rgba(207,142,68,0.4);
+      }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-default  navbar-inverse" role="navigation">
-    <div class="container-fluid">
+<div class="container-fluid">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         </button>
@@ -102,28 +99,25 @@ button:hover {
     </div>
     <div class="collapse navbar-collapse navbar-ex1-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li>
-                <a href="Home.php">Menu</a>
-            </li>
+          <li><a href="Home.php">Menu</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-      <li><a href="DnDMenu.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-    </ul>
+            <li><a href="DnDMenu.html"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+        </ul>
     </div>
-    </div>
+</div>
 </nav>
-    <div class="container">
-    <form class="form-horizontal" action="saveChar.php" method="get" id="myForm">
-        
-        <div class="container text-center">
-    <div class="form-inline">
-    <div class="form-group-lg col-lg-6">
-    <label for="name" style="font-size: 200%">Character Name</label>
-    <input type="text" class="form-control" id="name" name="char_name" required>
-    </div>
-  <div class="form-group-lg col-lg-6">
-    <label for="align" style="font-size: 200%">Alignment</label>
-    <select id="align" class="form-control" name="alignment" required>
+<div class="container">
+<form class="form-horizontal" action="saveChar.php" method="get" id="myForm">
+    <div class="container text-center">
+        <div class="form-inline">
+            <div class="form-group-lg col-lg-6">
+                <label for="name" style="font-size: 200%">Character Name</label>
+                <input type="text" class="form-control" id="name" name="char_name" required>
+            </div>
+            <div class="form-group-lg col-lg-6">
+                <label for="align" style="font-size: 200%">Alignment</label>
+                <select id="align" class="form-control" name="alignment" required>
         <option value="" disabled selected hidden>Please Choose</option>
         <option name="alignment" value="LG">Lawful Good</option>
         <option name="alignment" value="LN">Lawful Neutral</option>
@@ -135,72 +129,71 @@ button:hover {
         <option name="alignment" value="CN">Chaotic Neutral</option>
         <option name="alignment" value="CE">Chaotic Evil</option>
       </select>
-  </div>
+            </div>
         </div>
-        </div>
-        <br/>
-        <div class="container scores">
-          <ul>
-            <li>
-              <div class="score">
+    </div>
+    <br/>
+    
+<div class="container scores">
+    <ul>
+        <li>
+            <div class="score">
                 <label for="Strengthscore">Strength</label><input class="statName" name="Strength" placeholder="0" id="strength" type="number" required/>
-              </div>
+            </div>
               <div class="modifier">
                 <input placeholder="+0" id="strengthmod" disabled/>
               </div>
                 <button type="button" class="btn" onclick="statGenerate('strength')" style="border-radius: 20%; margin: 5px">Roll</button>
-            </li>
-            <li>
-              <div class="score">
+        </li>
+        <li>
+            <div class="score">
                 <label for="Dexterityscore">Dexterity</label><input class="statName" name="Dexterity" placeholder="0" id="dexterity" onchange="mod(this.name)" required />
-              </div>
-              <div class="modifier">
-                <input id="dexteritymod" placeholder="+0" disabled/>
-              </div>
-                <button type="button" class="btn" onclick="statGenerate('dexterity')" style="border-radius: 20%; margin: 5px">Roll </button>
-            </li>
-            <li>
-              <div class="score">
-                <label for="Constitutionscore">Constitution</label><input class="statName" name="Constitution" placeholder="0" id="constitution" type="number" onchange="mod(this.name)" required />
-              </div>
-              <div class="modifier">
-                <input id="constitutionmod" placeholder="+0" disabled/>
-              </div>
-                <button type="button" class="btn" onclick="statGenerate('constitution')" style="border-radius: 20%; margin: 5px">Roll </button>
-            </li>
-            <li>
-              <div class="score">
-                <label for="Wisdomscore">Wisdom</label><input class="statName" name="Wisdom" placeholder="0" id="wisdom" type="number" onchange="mod(this.name)" required />
-              </div>
-              <div class="modifier">
-                <input id="wisdommod" placeholder="+0" disabled/>
-              </div>
-                <button type="button" class="btn" value="increase stats" onclick="statGenerate('wisdom')" style="border-radius: 20%; margin: 5px">Roll</button>
-            </li>
-            <li>
-              <div class="score">
-                <label for="Intelligencescore">Intelligence</label><input class="statName" name="Intelligence" placeholder="0" id="intelligence" type="number" onchange="mod(this.name)" required />
-              </div>
-              <div class="modifier">
-                <input id="intelligencemod" placeholder="+0" disabled/>
-              </div>
-                <button type="button" class="btn" value="increase stats" onclick="statGenerate('intelligence')" style="border-radius: 20%; margin: 5px">Roll</button>
-            </li>
-            <li>
-              <div class="score">
-                <label for="Charismascore">Charisma</label><input class="statName" name="Charisma" placeholder="0" id="charisma" type="number" onchange="mod(this.name)" required />
-              </div>
-              <div class="modifier">
-                <input id="charismamod" placeholder="+0" disabled/>
-              </div>
-                <button type="button" class="btn" value="increase stats" onclick="statGenerate('charisma')" style="border-radius: 20%; margin: 5px">Roll</button>
-            </li>
-          </ul>
-          <button type="button" value="randAll" name="allRand" class="btn btn-primary btn-lg center-block" onclick="statGenerate('strength'); statGenerate('dexterity'); statGenerate('constitution'); statGenerate('wisdom'); statGenerate('intelligence'); statGenerate('charisma') ">Roll All Stats</button>
-          
-          
             </div>
-        <br>
+            <div class="modifier">
+                <input id="dexteritymod" placeholder="+0" disabled/>
+            </div>
+                <button type="button" class="btn" onclick="statGenerate('dexterity')" style="border-radius: 20%; margin: 5px">Roll </button>
+        </li>
+        <li>
+            <div class="score">
+                <label for="Constitutionscore">Constitution</label><input class="statName" name="Constitution" placeholder="0" id="constitution" type="number" onchange="mod(this.name)" required />
+            </div>
+            <div class="modifier">
+                <input id="constitutionmod" placeholder="+0" disabled/>
+            </div>
+                <button type="button" class="btn" onclick="statGenerate('constitution')" style="border-radius: 20%; margin: 5px">Roll </button>
+        </li>
+        <li>
+            <div class="score">
+                <label for="Wisdomscore">Wisdom</label><input class="statName" name="Wisdom" placeholder="0" id="wisdom" type="number" onchange="mod(this.name)" required />
+            </div>
+            <div class="modifier">
+                <input id="wisdommod" placeholder="+0" disabled/>
+            </div>
+                <button type="button" class="btn" value="increase stats" onclick="statGenerate('wisdom')" style="border-radius: 20%; margin: 5px">Roll</button>
+        </li>
+        <li>
+            <div class="score">
+                <label for="Intelligencescore">Intelligence</label><input class="statName" name="Intelligence" placeholder="0" id="intelligence" type="number" onchange="mod(this.name)" required />
+            </div>
+            <div class="modifier">
+                <input id="intelligencemod" placeholder="+0" disabled/>
+            </div>
+                <button type="button" class="btn" value="increase stats" onclick="statGenerate('intelligence')" style="border-radius: 20%; margin: 5px">Roll</button>
+        </li>
+        <li>
+            <div class="score">
+                <label for="Charismascore">Charisma</label><input class="statName" name="Charisma" placeholder="0" id="charisma" type="number" onchange="mod(this.name)" required />
+            </div>
+            <div class="modifier">
+                <input id="charismamod" placeholder="+0" disabled/>
+            </div>
+                <button type="button" class="btn" value="increase stats" onclick="statGenerate('charisma')" style="border-radius: 20%; margin: 5px">Roll</button>
+        </li>
+    </ul>
+    <button type="button" value="randAll" name="allRand" class="btn btn-primary btn-lg center-block" onclick="statGenerate('strength'); statGenerate('dexterity'); statGenerate('constitution'); statGenerate('wisdom'); statGenerate('intelligence'); statGenerate('charisma') ">Roll All Stats</button>
+</div>
+<br>
 
 <div class="form-group">
     <div class="modal fade" id="myModal" role="dialog">
@@ -229,126 +222,108 @@ button:hover {
 </div>
         
         
-        <div class="container">
+<div class="container">
     <ul class="nav nav-tabs nav-justified">
         <li class="active"><a data-toggle="tab" href="#race">1.Race</a></li>
         <li><a data-toggle="tab" href="#class">2.Class</a></li>
-    <li><a data-toggle="tab" href="#home">3.Character Info</a></li>
-    <li><a data-toggle="tab" href="#stat">4.Stats</a></li>
-  </ul>
+        <li><a data-toggle="tab" href="#home">3.Character Info</a></li>
+        <li><a data-toggle="tab" href="#stat">4.Stats</a></li>
+    </ul>
         
-        
-        <div class="tab-content">
-    <div id="home" class="tab-pane fade ">
-        <br>
-        
-      <div class="form-group">
-        <div class="armorclass">
-          <div>
-            <label for="ac" class="control-label col-sm-2">Armor Class</label><input name="ac" id="armor" placeholder="10" type="number" class="col-sm-10" disabled/>
-          </div>
-          </div></div>
+    <div class="tab-content">
+        <div id="home" class="tab-pane fade ">
+                    <br>
+                    <div class="form-group">
+                        <div class="armorclass"><div>
+                            <label for="ac" class="control-label col-sm-2">Armor Class</label><input name="ac" id="armor" placeholder="10" type="number" class="col-sm-10" disabled/>
+                    </div></div></div>
           
-          <div class="form-group">
-        <div class="initiative">
-          <div>
-            <label for="initiative" class="control-label col-sm-2">Initiative</label><input name="initiative" id="init" placeholder="+0" type="number" class="col-sm-10" disabled/>
-          </div>
-              </div></div>
+                    <div class="form-group">
+                        <div class="initiative"><div>
+                            <label for="initiative" class="control-label col-sm-2">Initiative</label><input name="initiative" id="init" placeholder="+0" type="number" class="col-sm-10" disabled/>
+                    </div></div></div>
               
-              <div class="form-group">
-        <div class="speed">
-          <div>
-            <label for="speed" class="control-label col-sm-2">Speed</label><input name="speed" placeholder="0" type="number" class="col-sm-10" id="speedStat" disabled/>
-          </div>
-              </div></div>
-            
-                  <div class="form-group">
-        <div class="hp">
-              <label for="maxhp" class="control-label col-sm-2">Hit Point Die</label><input name="maxhp" placeholder="10" type="number" class="col-sm-10" id="hpStat" disabled/>
-                      </div></div>
-          
-
-        <div class="form-group">
-  <label for="extra">Languages and Proficiencies</label>
-  <textarea class="form-control" rows="9" id="extra" name="lang" disabled></textarea>
-        </div></div>
-            
-            
-            
-            
-            
-    <div id="race" class="tab-pane fade in active">
-        <br>
-        <div class="form-group">
-  <label class="control-label col-sm-2" for="races">Select Race</label>
-                <div class="col-sm-10">
-  <select class="form-control" id="races" name="race" onchange="retrieve(this.name, this.value)" required>
-      <option value="" disabled selected hidden>Please Choose</option>
-     <?php
-    foreach ($db->query("SELECT * FROM race") as $row)
-{
-	$race = $row['name'];
-	$id = $row['id'];
-	if (isset($row))
-	{
-		echo "<option  value='$id' name='$id'>$race</option>";
-	}
-}
-      ?>
-  </select>
-</div></div>
-            
             <div class="form-group">
-  <label for="race_feats">Race Feautures</label>
-  <textarea class="form-control" rows="8" id="race_feats" disabled></textarea>
+                <div class="speed"><div>
+                    <label for="speed" class="control-label col-sm-2">Speed</label><input name="speed" placeholder="0" type="number" class="col-sm-10" id="speedStat" disabled/>
+            </div></div></div>
+            <div class="form-group">
+                <div class="hp">
+                    <label for="maxhp" class="control-label col-sm-2">Hit Point Die</label><input name="maxhp" placeholder="10" type="number" class="col-sm-10" id="hpStat" disabled/>
+            </div></div>
+            <div class="form-group">
+                <label for="extra">Languages and Proficiencies</label>
+                <textarea class="form-control" rows="9" id="extra" name="lang" disabled></textarea>
+            </div></div>
+                 
+<div id="race" class="tab-pane fade in active">
+    <br>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="races">Select Race</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="races" name="race" onchange="retrieve(this.name, this.value)" required>
+            <option value="" disabled selected hidden>Please Choose</option>
+            <?php
+                foreach ($db->query("SELECT * FROM race") as $row)
+                {
+	               $race = $row['name'];
+	               $id = $row['id'];
+	               if (isset($row))
+	               {
+		              echo "<option  value='$id' name='$id'>$race</option>";
+	               }
+                }
+            ?>
+            </select>
         </div></div>
-            
-    <div id="class" class="tab-pane fade">
-        <br>
         <div class="form-group">
-  <label class="control-label col-sm-2" for="classes">Select Class</label>
-                <div class="col-sm-10">
-  <select class="form-control" id="classes" name="class" onchange="retrieve(this.name, this.value)" required>
-      <option value="" disabled selected hidden>Please Choose</option>
-    <?php
-    foreach ($db->query("SELECT * FROM class") as $row)
-{
-	$class = $row['name'];
-	$id = $row['id'];
-	if (isset($row))
-	{
-		echo "<option  value='$id' name='$id'>$class</option>";
-	}
-}
-      ?>
-  </select>                  
+            <label for="race_feats">Race Feautures</label>
+            <textarea class="form-control" rows="8" id="race_feats" disabled></textarea>
 </div></div>
+            
+<div id="class" class="tab-pane fade">
+    <br>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="classes">Select Class</label>
+        <div class="col-sm-10">
+            <select class="form-control" id="classes" name="class" onchange="retrieve(this.name, this.value)" required>
+            <option value="" disabled selected hidden>Please Choose</option>
+            <?php
+                foreach ($db->query("SELECT * FROM class") as $row)
+                {
+	               $class = $row['name'];
+	               $id = $row['id'];
+	               if (isset($row))
+	               {
+		              echo "<option  value='$id' name='$id'>$class</option>";
+	               }
+                }
+            ?>
+            </select>                  
+    </div></div>
         
-              <div class="form-group">
-  <label class="control-label col-sm-1" for="spellList" id="spellLabel">Select Spells</label>
-                <div class="col-sm-5">
-  <select class="form-control" id="spells" name="spellList[]" onchange="verifyAmount('spells')" multiple>
-                    </select>
-                  </div>
-  <label class="control-label col-sm-1" for="cantripList" id="cantripLabel">Select Cantrips</label>
-                <div class="col-sm-5">
-  <select class="form-control" id="cantrips" name="cantripList[]" onchange="verifyAmount('cantrips')" multiple>
-                    </select>
-                        </div></div>
-        
-        
-        
-        <div class="form-group">
-  <label for="class_feats">Class Features</label>
-  <textarea class="form-control" rows="8" id="class_feats" disabled></textarea>
+    <div class="form-group">
+        <label class="control-label col-sm-1" for="spellList" id="spellLabel">Select Spells</label>
+        <div class="col-sm-5">
+            <select class="form-control" id="spells" name="spellList[]" onchange="verifyAmount('spells')" multiple>
+            </select>
         </div>
+        <label class="control-label col-sm-1" for="cantripList" id="cantripLabel">Select Cantrips</label>
+        <div class="col-sm-5">
+            <select class="form-control" id="cantrips" name="cantripList[]" onchange="verifyAmount('cantrips')" multiple>
+            </select>
+    </div></div>
+        
+    <div class="form-group">
+        <label for="class_feats">Class Features</label>
+        <textarea class="form-control" rows="8" id="class_feats" disabled></textarea>
     </div>
+</div>
             
-    <div id="stat" class="tab-pane fade">
-        <br>
-        <div class="form-inline">
-            <div class="form-group">
+<div id="stat" class="tab-pane fade">
+    <br>
+    <div class="form-inline">
+        <div class="form-group">
             <ul>
               <li class="list-group-item col-xs-6">
                 <label for="Acrobatics" class="control-label col-sm-4 skillsLabel">Acrobatics <span class="skill">(Dex)</span></label><input name="skills[]" id="Acrobatics" placeholder="0" type="number" class="form-control dex" disabled/>
@@ -421,19 +396,16 @@ button:hover {
               <li class="list-group-item col-xs-6">
                 <label for="Survival" class="control-label col-sm-4 skillsLabel">Survival <span class="skill">(Wis)</span></label><input name="skills[]" id="Survival" placeholder="0" type="number" class="form-control wis" disabled/>
               </li>
-                
             </ul>
-            </div>
-          </div>
-      </div>
-        <div class="form-group"> 
-    <div class="col-sm-offset-2 col-sm-10">
-            </div></div>
-            </div></div>
+        </div>
+    </div>
+</div>
+    
+</div></div>
         <input  type="button" class="btn-success btn-lg center-block" value="Make Character" onclick="formEnable()">
         <input type="submit" hidden="hidden" id="submitButton">
 </form>
-    </div>
+</div>
         
 <script>
     var stats = ['0','0','0','0','0','0'];
@@ -445,6 +417,10 @@ button:hover {
     var cantrips = ['0'];
     var spells = ['0'];
     
+     /************************
+      * Function that disables all user input boxes on page load. 
+      * Makes sure the user adheres to D&D rules and guidelines for character creating
+      ***********************/
     $(document).ready(function() {
   $('#switcher').click(function() {
     $('input, select, textarea').each(function() {
@@ -455,6 +431,10 @@ button:hover {
   });
 });
     
+    /************************
+      * Function that computes the selected stat for a chacter.
+      * Ensures values that follow the guidelines for rolling three 6 sided dice
+      ***********************/
         function statGenerate(name) {
             var base_random = Math.floor((Math.random() * 16) + 3);
             switch (name) {
@@ -480,6 +460,9 @@ button:hover {
             
         }
     
+    /************************
+      * Function that adds any extra stat bonuses from racial or class perks to the base stats.
+      ***********************/
     function addStat(name) {
         //More efficenet but causes lots of bugs and freezes page
         /*var statSpot = document.getElementsByClassName('statName');
@@ -501,6 +484,7 @@ button:hover {
         mod('charisma');
     }
     
+    
     function mod(type) {
         var score = document.getElementById(type).value;
         var modName = (type + 'mod');
@@ -513,6 +497,11 @@ button:hover {
         skills(type, modScore);
     }
     
+    /************************
+      * Function that makes an AJAX call to an external database to lookup
+      * information concerning classes, races, and spells. 
+      * On a successful retrieveal, the page will update with new information
+      ***********************/
     function retrieve(type, id) {
         var parse = ("table=" + type + "&id=" + id);
         var xmlhttp = new XMLHttpRequest();
@@ -688,6 +677,9 @@ button:hover {
          xmlhttp.send(parse);
     }
     
+    /************************
+      * Function that updates the users skills based on the base stats
+      ***********************/
     function skills(type, score) {
         var skillAbriv = (type[0] + type[1] + type[2]);
         
@@ -697,6 +689,9 @@ button:hover {
         } 
     }
   
+    /************************
+      * Function that verifies the amount of spells or cantrips chosen does not exceed the limit
+      ***********************/
     function verifyAmount(type)
         {
             var selectChoose = document.getElementById(type);
@@ -719,6 +714,9 @@ button:hover {
             return true;
         }
     
+    /************************
+      * Function that shows the optional avaiable languages to learn for the race
+      ***********************/
     function addLanguage() {
         var langs = document.getElementsByName('language');
         for (i =0; i <langs.length; i++) {
@@ -727,6 +725,10 @@ button:hover {
         }
     }
     
+    /************************
+      * Function that enables all user input boxes before page submit. 
+      * This is required to process the form on the server side.
+      ***********************/
     function formEnable() {
     var yourForm = document.getElementById('myForm');
     if(yourForm.checkValidity()) {

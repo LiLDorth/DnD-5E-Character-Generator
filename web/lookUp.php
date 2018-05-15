@@ -2,19 +2,16 @@
 try {
     global $db;
 	$dbUrl = getenv('DATABASE_URL');
-
 	if (empty($dbUrl)){
 		$dbUrl = "postgres://postgres:server@localhost:5432/dnd";
 	}
-	
 	$dbopts = parse_url($dbUrl);
-
 	$currentHost = $dbopts["host"];
 	$currentPort = $dbopts["port"];
 	$currentUser = $dbopts["user"];
 	$password = $dbopts["pass"];
 	$name = ltrim($dbopts["path"], '/');
-
+    
 	$db = new PDO("pgsql:host=$currentHost;port=$currentPort;dbname=$name", $currentUser, $password);
     $db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 } catch (PDOException $ex) {
@@ -24,7 +21,6 @@ try {
 
 $table = htmlspecialchars($_REQUEST['table']);
 $idNum = htmlspecialchars($_REQUEST['id']);
-
 
 //SQL Injection preventive measures, PHP prohibts binding tablenames so this is a workaround
 if ($table === 'race' || $table === 'class') {

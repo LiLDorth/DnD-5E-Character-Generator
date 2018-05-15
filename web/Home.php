@@ -120,7 +120,7 @@ $id_user = $user_id['id'];
     <form action="dnd_PDF.php" method="post">
         <h1 style="color: white">SELECT A CHARACTER</h1>
         <select class="form-control" id="chara" name="character" required class="col-xs-4">
-<option value="" disabled selected hidden>Characters:</option>
+<option value="" disabled selected hidden>Characters</option>
             <?php
     foreach ($db->query("SELECT name, id FROM public.character WHERE user_id = $id_user;") as $row)
     {
@@ -134,8 +134,8 @@ $id_user = $user_id['id'];
 ?>
         </select>
         <br>
-        <input type="submit" class="btn-lg buttons" value="Load Character">
-        <a href="DnD_Builder.php" class="buttons btn-lg" style="color:black; display: inline-block;">Create A New Character</a>
+        <input type="submit" class="btn-lg buttons" value="Load Character" style="color:black; display: inline-block; height: 50px;">
+        <a href="DnD_Builder.php" class="buttons btn-lg" style="color:black; display: inline-block; height: 50px;">Create A New Character</a>
             </form></div><div class="col-lg-3"></div></div>
         </div>
 </body>

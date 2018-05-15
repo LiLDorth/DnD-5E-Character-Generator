@@ -52,7 +52,6 @@ if ($type == 'Sign In') {
     if(password_verify($_POST["pass"],$info['password'])){
         $_SESSION['user'] = $_POST['user'];
         header("Location: Home.php");
-        echo "gets herehere";
         die();
     }
 }
